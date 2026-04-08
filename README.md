@@ -49,29 +49,7 @@ from datasets import load_dataset
 dataset = load_dataset("go_emotions")
 ```
 
----
 
-## Shared Utilities
-
-### `src/preprocessing.py`
-```python
-from src.preprocessing import get_tokenizer, tokenize, binarize_labels, LABEL_NAMES, NUM_LABELS
-
-tokenizer = get_tokenizer()
-encoded = tokenize(["I am so happy"], tokenizer)
-vector = binarize_labels([2, 14])  # returns 28-dim binary array
-```
-
-### `src/metrics.py`
-```python
-from src.metrics import compute_metrics, compute_per_label_f1
-from src.preprocessing import LABEL_NAMES
-
-metrics = compute_metrics(true_labels, pred_labels)
-per_label = compute_per_label_f1(true_labels, pred_labels, LABEL_NAMES)
-```
-
----
 
 ## Prediction File Format
 
