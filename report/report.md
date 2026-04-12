@@ -14,57 +14,58 @@ We evaluate two models on a multi-label emotion classification task using Micro 
 | BERT | 0.5119 | 0.2386 | 0.7275 | 0.3948 |
 
 Analysis:
-	•	BERT significantly outperforms the baseline.
-	•	The baseline fails to learn meaningful patterns (all metrics are 0).
-	•	BERT achieves high precision but relatively low recall, indicating it is
-        conservative and misses some true labels.
+- BERT significantly outperforms the baseline.
+- The baseline fails to learn meaningful patterns (all metrics are 0).
+- BERT achieves high precision but relatively low recall, indicating it is conservative  and misses some true labels.
 
 ## 3. Per-label Analysis
 
+The dataset is highly imbalanced across emotion labels. For example, "neutral" has over 14,000 examples, while rare emotions such as "grief" have fewer than 100 samples. This imbalance makes it difficult for models to learn meaningful patterns for rare labels. As a result, many low-frequency emotions such as grief, pride, relief, and nervousness receive F1 scores close to zero, while frequent labels achieve much higher performance.
+
 High-performing labels:
-	•	gratitude (0.91)
-	•	amusement (0.81)
-	•	love (0.79)
+- gratitude (0.91)
+- amusement (0.81)
+- love (0.79)
 
 Medium-performing labels:
-	•	neutral, joy, curiosity
+- neutral, joy, curiosity
 
 Low-performing labels (F1 = 0):
-	•	caring, confusion, disappointment, fear, etc.
+- caring, confusion, disappointment, fear, etc.
 
 Observations:
-	•	Frequent and explicit emotions are easier to classify.
-	•	Rare or subtle emotions are harder for the model.
+- Frequent and explicit emotions are easier to classify.
+- Rare or subtle emotions are harder for the model.
 
 ## 4. Error Analysis
 
 Missing Predictions (Low Recall)
 
 Example:
-	•	True: [remorse]
-	•	Predicted: []
+- True: [remorse]
+- Predicted: []
 
 The model fails to detect implicit emotions.
 
 Misclassification
 
 Example:
-	•	True: [excitement]
-	•	Predicted: [neutral]
+- True: [excitement]
+- Predicted: [neutral]
 
 Weak emotional signals are often classified as neutral.
 
 Multi-label Errors
 
 Example:
-	•	True: [annoyance, disapproval]
-	•	Predicted: [surprise]
+- True: [annoyance, disapproval]
+- Predicted: [surprise]
 
 The model struggles with multi-label classification.
 
 
 ## 5. Conclusion
 
-•	BERT clearly outperforms the baseline.
-•	However, recall remains relatively low.
-•	The model performs well on frequent emotions but struggles with rare and subtle ones.
+- BERT clearly outperforms the baseline.
+- However, recall remains relatively low.
+- The model performs well on frequent emotions but struggles with rare and subtle ones.
